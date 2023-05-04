@@ -1,0 +1,34 @@
+<div *ngIf="showNavbar" class="navbar navbar-expand-sm bg-dark
+            navbar-dark fixed-top">
+    <span class="navbar-brand">Project</span>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" routerLink='/'>Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink='/analysis'>Analysis</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink='/sentimentanalysis'> Sentiment Analysis</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink='/discussion'> Discussion Forum</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink='/profile'>Profile</a>
+        </li>
+    </ul>
+
+    <div class="form-inline ms-auto" style="margin-right: 10px;">
+        <ng-container *ngIf="authService.isAuthenticated$ | async;
+                else loggedOut">
+            <button class="btn btn-outline-info" (click)="authService.logout()">Logout</button>
+        </ng-container>
+
+        <ng-template #loggedOut>
+            <button class="btn btn-outline-info" style (click)="authService.loginWithRedirect(
+                    { appState : { target : this.router.url } } )">
+                Login</button>
+        </ng-template>
+    </div>
+</div>

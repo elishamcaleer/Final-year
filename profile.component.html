@@ -1,0 +1,15 @@
+<body>
+    <h1></h1>
+    <ng-container>
+    <hr>
+    <h4>Logged in user:</h4>
+    <div class="user">
+    <ul *ngIf="authService.user$ | async as user">
+        <li> Name: {{user.name}}</li>
+        <li>Email: {{user.email}}</li>
+    </ul>
+    </div>
+    </ng-container>
+    <div class="br">
+    </div>
+</body>

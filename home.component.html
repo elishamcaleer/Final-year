@@ -1,0 +1,44 @@
+<body>
+    <div class="main-title">AP1 Project</div>
+    <hr>
+    <hr class="rounded">
+    <div class="container">
+    </div>
+    <div class="conatiner">
+    <div class="title">
+        Social Media and Mental Health
+    </div>
+    <hr>
+    <div class="paragraph">
+        The purpose of this project is to make use of social media in order to develop a deeper understanding on mental health, this is done so via a variety of analysis.
+        The focus of this prototype is that of the sentiment ensuring that it is accurate
+    </div>
+    </div>
+    <ng-container>
+        <hr>
+        <h4>Logged in user:</h4>
+        <div class="user">
+        <ul *ngIf="authService.user$ | async as user">
+            <li> Name: {{user.name}}</li>
+            <li>Email: {{user.email}}</li>
+        </ul>
+        </div>
+        </ng-container>
+        <div class="br">
+        </div>
+        <div class="dashboard">
+            <div class="card" routerLink='/analysis'>
+              <div class="card-title">Analysis</div>
+              <div class="card-icon"><i class="fa fa-chart-bar"></i></div>
+            </div>
+            <div class="card" routerLink='/sentimentanalysis'>
+              <div class="card-title">Sentiment Analysis</div>
+              <div class="card-icon"><i class="fa fa-smile"></i></div>
+            </div>
+            <div class="card" routerLink='/profile'>
+              <div class="card-title">Profile</div>
+              <div class="card-icon"><i class="fa fa-user"></i></div>
+            </div>
+          </div>
+          
+</body>

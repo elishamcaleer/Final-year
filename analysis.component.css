@@ -1,0 +1,117 @@
+.wordcloud {
+    height: 70%;
+    width: 75%;
+    padding-top: 70px;
+    padding-bottom: 60px;
+    padding-left: 400px;
+
+}
+
+.wordcloud_text{
+    justify-content: center;
+    text-align: center;
+    color: rgb(8, 8, 106);
+    font-size: larger;
+    font-weight: 600;
+}
+
+body {
+    background-color: rgb(144, 144, 144);
+    height: 100%;
+    overflow: auto;
+
+}
+
+.chart_text{
+    color: rgb(8, 8, 106);
+    justify-content: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: large;
+    text-align-last: center;
+    font-weight: 400;
+}
+
+
+.piechart_text{
+    color: rgb(8, 8, 106);
+    justify-content: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: larger;
+    text-align-last: center;
+    font-weight: 700;
+}
+
+.sentiment_text{
+    color: rgb(8, 8, 106);
+    justify-content: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: larger;
+    text-align-last: center;
+    font-weight: 700;
+    padding-bottom: 30px;
+}
+
+.title{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: 46pt;
+    text-align: center;
+    padding-bottom: 40px;
+    color: rgb(8, 8, 106);
+}
+
+.piechart {
+    height: 70%;
+    width: 75%;
+    padding-top: 70px;
+    padding-bottom: 60px;
+    padding-left: 400px;
+
+}
+
+.image1-container {
+    display: flex;
+    justify-content: space-between;
+    height: 130%;
+}
+
+
+#yearly {
+    width: 45%;
+    height: 400px;
+}
+
+#monthly {
+    width: 45%;
+    height: 400px;
+}
+
+.image2-container {
+    display: flex;
+    justify-content: space-between;
+    height: 120%;
+}
+
+#daily {
+    width: 50%;
+    height: 400px;
+}
+#hourly {
+    width: 50%;
+    height: 400px;
+}
+
+.sentiment {
+    height: 200%;
+    width: 80%;
+    padding-top: 70px;
+    padding-bottom: 60px;
+    padding-left: 250px;
+}
+

@@ -1,0 +1,33 @@
+.centered {
+    position: relative;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    background-color: rgb(144, 144, 144);
+    height: 100%;
+    overflow: auto;
+  }
+
+body{
+    background-color: rgb(144, 144, 144);
+    height: 100%;
+    overflow: auto;
+}
+
+  .header {
+    color: rgb(8, 8, 106);
+    padding-top: 70px;
+  }
+
+  p {
+    color: rgb(8, 8, 106);
+    font-size:large ;
+    line-height: 24px;
+    font-weight: 300;
+    padding-top: 40px;
+  }
+
+.br{
+    padding-bottom: 350px;
+  }
+

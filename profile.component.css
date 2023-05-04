@@ -1,0 +1,21 @@
+body{
+
+        background-color: rgb(144, 144, 144);
+        height: 100%;
+        overflow: auto;
+}
+
+h4{
+    color: rgb(8, 8, 106);
+    padding-top: 70px;
+}
+
+.user{
+    color: rgb(8, 8, 106);
+    font-size: large;
+
+}
+
+.br{
+    padding-bottom: 600px;
+}

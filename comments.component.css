@@ -1,0 +1,19 @@
+.error {
+    background-color: #fff0f0;
+}
+.card-img-top { object-fit: cover; width: 70px; height: 70px; align-self: center;
+}
+body {
+    padding-top: 70px;
+    background-color: rgb(200, 198, 198); text-align: center;
+}
+.comment-container {
+    padding-top: 20px;
+    background-color: rgb(125, 120, 120); font-weight: 400;
+    color: #ece8e8;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 2px;
+}
+.card-container { padding-top: 70px; margin-block: center; padding-left: 300px; padding-right: 300px; color: darkslategray; justify-content: center; font-weight: 600;
+}

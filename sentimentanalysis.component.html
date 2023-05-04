@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<body>
+    <ng-container *ngIf="authService.isAuthenticated$ | async; 
+                                    else logOut">
+    <div class="container mt-5">
+      <div class="centered">
+        <h1 class="header">Test Sentiment Analysis</h1>
+
+        <p class="desc">
+          Type a sentence, click on the submit button and wait for your prediction.
+        </p>
+        <input [(ngModel)]="sentence" placeholder="Enter a sentence">
+        <button class="btn btn-primary" (click)="getSentiment()">Get Sentiment</button>
+        <p>Sentiment: {{ sentiment }}</p>
+        <br />
+        <br />
+        <div class="br">
+        </div>
+      </div>
+    </div>
+    </ng-container>
+    <ng-template #logOut>
+    </ng-template>
+</body>

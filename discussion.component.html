@@ -1,0 +1,90 @@
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 d-flex justify-content-center">
+                <div class="card-deck">
+                    <div *ngFor="let discussion of discussion_list | async">
+                        <div class="card mb-3" style="background-color:antiquewhite" style="cursor: pointer"
+                                        [routerLink]="['/discussion', discussion._id]">
+                        <div class="card-head">
+                            User-Name:
+                            {{discussion.username}}
+                        </div>
+                        <div class="card-body">
+                            Title:
+                            {{discussion.title}}
+                        </div>
+                        <div class="card-footer">
+                            Content:
+                            {{discussion.content}}
+                        </div>
+                    </div>
+                </div>   
+            </div>    
+        </div>       
+        <div class="row">
+            <div class="col-sm-6">
+                <button class="btn btn-success" (click) = 'previousPage()'>
+                    Previous
+                </button>
+            </div>
+            <div class="'col-sm-6 text-end">
+                <button class="btn btn-success" (click) = 'nextPage()'>
+                    Next
+                </button>
+            </div>
+            <button style = "margin: 5px; padding: 5px" type = "button" class="btn btn-primary"
+                (click) = "openFullScreen()">New Discussion</button>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">New Discussion</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="class row">
+                            <div class="col-sm-12">
+                                <ng-container *ngIf="authService.isAuthenticated$ | async;
+                                    else loggedOut">
+                                    <h2>Details</h2>
+                                    <form [formGroup]="discussionForm" (ngSubmit)="onSubmit()">
+                                        <div class="form-group">
+                                            <label for="username">User Name</label>
+                                            <input type="text" id="username" name="username" class="form-control"
+                                                formControlName="username" [ngClass]="{'error': isInvalid('username')}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <input type="text" id="title" name="title" class="form-control"
+                                                formControlName="title" [ngClass]="{'error': isInvalid('title')}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="content">Contetn</label>
+                                            <input type="text" id="content" name="content" class="form-control"
+                                                formControlName="content" [ngClass]="{'error': isInvalid('content')}">
+                                        </div>
+                                        <span *ngIf="isIncomplete()">
+                                            All fields must be completed
+                                        </span>
+                                        <button *ngIf="!isIncomplete()" type="submit" class="btn btn-success">Success
+                                        </button>
+                                    </form>
+                                </ng-container>
+                                <ng-template #loggedOut>
+                                    <h2>You have to login to access this</h2>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="closePopup()">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>

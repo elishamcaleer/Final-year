@@ -1,0 +1,82 @@
+<html>
+    <body>
+    <div class ="title">Analysis of All Tweets</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <img class="wordcloud" src = "assets/wordcloud.png">
+    <div class ="wordcloud_text">This WordCloud demonstrates the most frequent words featured in the Tweets in the dataset</div>
+    <br>
+    <img class="piechart" src="assets/piechart.png">
+    <div class = 'piechart_text'>The Pie Chart demonstrates the top 15 words featured and the percentages in which they occur</div>
+    <br>
+    <br>
+    <div class="image1-container">
+        <img id="yearly" src="assets/yearly.png">
+        <br>
+        <img id="monthly" src="assets/monthly.png">
+        <br>
+    </div>
+    <br>
+    <br>
+    <div class="image2-container">
+        <img id="daily" src="assets/daily.png">
+        <img id="hourly" src="assets/hourly.png">
+    </div>
+    <br>
+    <div class="chart_text">These charts visualise a range of time series analysis of the data, from these charts we can say, that the most frequent year for Tweets was 2015, the most 
+        frequent months were December and Janurary, this could be linked to the seasonal aspect. Also that the most frequent 
+        day was a Thursday followed by Wednesday, the middle or hump of the week and that the most frequent hours were between 3 and 4am, which tends to be seen as a negative period
+    </div>
+    <img class="sentiment" src="assets/sentiment.png">
+    <button style="margin: 5px; padding: 5px" type="button" class="btn btn-primary"
+    (click)="openFullScreen()">View and Download full analysis</button>
+    <div class="sentiment_text">The chart displays the range of the sentiment present in the dataset, and with testing the accuracy using train and test sets and the against the sentiment 
+        we can say that it is highly accuracte with it appearing to have around 82% accuracy
+    </div>
+    <br>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Sentiment Analysis:</h4>
+                    <button type="button" class="btn btn-danger" (click)="closePopup()">
+                        Close
+                    </button>
+                    <ng-container *ngIf="authService.isAuthenticated$ | async; 
+                                    else logOut">
+                    <a href="assets/sentiment_analysis.json" download="Sentiment Analysis">
+                        <button type="button" class="btn btn-primary">Download</button>
+                    </a>
+                    </ng-container>
+                </div>
+                    <div class="container">
+                        <div class="class row">
+                            <div class="col-sm-12">
+
+                                <ng-container *ngIf="authService.isAuthenticated$ | async; 
+                                    else loggedOut">
+                                    <div class="modal-body">
+                                        <pre>{{ data | json }}</pre>
+                                    </div>
+                                </ng-container>
+
+
+                                <ng-template #loggedOut>
+                                    <h2>Please login to view this</h2>
+                                </ng-template>
+
+                                <ng-template #logOut>
+                                </ng-template>
+
+                            </div>
+                        </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+         </div> 
+    </div>
+    </div>
+</body>
+</html>
