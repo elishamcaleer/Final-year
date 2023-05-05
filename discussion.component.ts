@@ -19,6 +19,7 @@ import { ActivatedRoute } from '@angular/router';
     pagesToShow = 5;
     showForm = false;
     searchResults: any = [];
+    count : number = 0;
 
 
     constructor(public authService : AuthService, 
@@ -30,6 +31,7 @@ import { ActivatedRoute } from '@angular/router';
     ngOnInit(){
         this.sessionStorage();
         this.newDiscussion();
+
     }
 
     displayForm(){
@@ -112,6 +114,7 @@ import { ActivatedRoute } from '@angular/router';
             discussion.content.toLowerCase().includes(query.toLowerCase())
         );
     }
+
 
 
 }
