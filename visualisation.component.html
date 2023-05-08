@@ -1,8 +1,68 @@
 <html>
     <body>
-    <br>
-    <br>
-    <br>
+        <div class="title">
+            <h1>Models and Visualisation</h1>
+        </div>
+        <br>
+        <br>
+
+        <div class="lda">
+            Below is a trained LDA model using the dataset and the interactive output
+        </div>
         <iframe src="assets/visualization.html" width="100%" height="870"></iframe>
+
+        <br>
+
+        <div class="bert">
+            Below is a trained BERT model using the dataset and a graphical output of the outcome as well as the JSON output in the modal
+        </div>
+        <img class="bertimage" src="assets/bertmodelgraph.png">
+        <br>
+        <div class="button">
+        <button style="margin: 5px; padding: 5px" type="button" class="btn btn-primary"
+        (click)="openFullScreen()">View and Download BERT Model outcome</button>
+        </div>
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">BERT Model:</h4>
+                        <button type="button" class="btn btn-danger" (click)="closePopup()">
+                            Close
+                        </button>
+                        <ng-container *ngIf="authService.isAuthenticated$ | async; 
+                                        else logOut">
+                        <a href="assets/model_output.json" download="BERT Model Output">
+                            <button type="button" class="btn btn-primary">Download</button>
+                        </a>
+                        </ng-container>
+                    </div>
+                        <div class="container">
+                            <div class="class row">
+                                <div class="col-sm-12">
+    
+                                    <ng-container *ngIf="authService.isAuthenticated$ | async; 
+                                        else loggedOut">
+                                        <div class="modal-body">
+                                            <pre>{{ data | json }}</pre>
+                                        </div>
+                                    </ng-container>
+    
+    
+                                    <ng-template #loggedOut>
+                                        <h2>Please login to view this</h2>
+                                    </ng-template>
+    
+                                    <ng-template #logOut>
+                                    </ng-template>
+    
+                                </div>
+                            </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+             </div> 
+        </div>
+        </div>
     </body>
 </html>
