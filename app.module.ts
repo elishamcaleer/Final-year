@@ -14,6 +14,8 @@ import { SentimentAnalysisComponent } from './sentimentanalysis.component';
 import { DiscussionComponent } from './discussion.component';
 import { CommentsComponent } from './comments.component';
 import { FormsModule } from '@angular/forms';
+import { AssessComponent } from './self-assess.component';
+import { VisualisationComponent } from './visualisation.component';
 
 var routes: any = [
     {
@@ -39,6 +41,14 @@ var routes: any = [
     {
         path: 'discussion/:id',
         component: CommentsComponent
+    },
+    {
+        path: 'self-assess',
+        component: AssessComponent
+    },
+    {
+        path: 'visualisation',
+        component: VisualisationComponent
     }
 
 ];
@@ -46,7 +56,7 @@ var routes: any = [
 
 @NgModule({
     declarations: [
-        AppComponent, HomeComponent, NavComponent, ProfileComponent, AnalysisComponent, SentimentAnalysisComponent, DiscussionComponent, CommentsComponent
+        AppComponent, HomeComponent, NavComponent, ProfileComponent, AnalysisComponent, SentimentAnalysisComponent, DiscussionComponent, CommentsComponent, AssessComponent, VisualisationComponent
     ],
     imports: [
         BrowserModule, HttpClientModule, RouterModule.forRoot(routes), ReactiveFormsModule, FormsModule,

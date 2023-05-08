@@ -1,6 +1,9 @@
 <body>
     <div class="container">
         <div class="row">
+            <div class="title">
+                Discussion Froum
+            </div>
             <div class="col-sm-12 d-flex justify-content-center">
                 <div class="card-deck">
                     <div *ngFor="let discussion of discussion_list | async">
@@ -48,7 +51,7 @@
                         <div class="class row">
                             <div class="col-sm-12">
                                 <ng-container *ngIf="authService.isAuthenticated$ | async;
-                                    else loggedOut">
+                                    else loggedOut"> 
                                     <h2>Details</h2>
                                     <form [formGroup]="discussionForm" (ngSubmit)="onSubmit()">
                                         <div class="form-group">
@@ -62,14 +65,16 @@
                                                 formControlName="title" [ngClass]="{'error': isInvalid('title')}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="content">Contetn</label>
-                                            <input type="text" id="content" name="content" class="form-control"
+                                            <label for="content">Content</label>
+                                            <textarea rows=3 id="content" name="content" class="form-control"
                                                 formControlName="content" [ngClass]="{'error': isInvalid('content')}">
+                                            </textarea>
                                         </div>
                                         <span *ngIf="isIncomplete()">
                                             All fields must be completed
                                         </span>
-                                        <button *ngIf="!isIncomplete()" type="submit" class="btn btn-success">Success
+                                        <br>
+                                        <button *ngIf="!isIncomplete()" type="submit" class="btn btn-success">Submit
                                         </button>
                                     </form>
                                 </ng-container>

@@ -11,11 +11,4 @@ import { Router } from '@angular/router';
 export class NavComponent {
     constructor(public authService: AuthService,
         public router: Router) { }
-
-public showNavbar = true;
-ngOnInit() {
-    this.showNavbar = !this.router.isActive('/home', true);
-  }
-  
-
 }

@@ -14,14 +14,16 @@
                         Content:
                         {{discussion.content}}
                     </div>
+                    <br>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mymodal2"
                     (click)="openPopup()">Edit</button>
                     <ng-template #loggedOut>
-                        <h2>Please login to delete this discussion</h2>
                     </ng-template>
                     <ng-container *ngIf="authService.isAuthenticated$ | async; else loggedOut">
                         <button (click)="onSubmitDeleteDiscussion()" type="submit" class="btn btn-danger">Delete</button>
                     </ng-container>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>
@@ -40,8 +42,8 @@
                         {{comment.emotions}} emotions
                     </div>
                     <ng-template #loggedOut>
-                        <h2>Please login to Delete a comment</h2>
                     </ng-template>
+                    <br>
                     <ng-container *ngIf="authService.isAuthenticated$ | async; else loggedOut">
                         <button (click)="onSubmitDeleteComment(comment._id)" type="submit" class="btn btn-danger">Delete</button>
                     </ng-container>
@@ -90,7 +92,7 @@
         <div class="comment-container" id="comments">
             <div class="class row">
                 <div class="col-sm-12">
-                    <ng-container *ngIf="authService.isAuthenticated$ | async; else loggedOut">
+                    <ng-container *ngIf="authService.isAuthenticated$ | async; else logOut">
                         <h2>Please comment on this discussion:</h2>
                         <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment()">
                             <div class="form-group">
@@ -99,31 +101,34 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="comment">Please leave you comment</label>
+                                <label for="comment">Please leave your comment</label>
                                 <textarea name="comment" id="comment" rows="3" class="form-control" formControlName="comment" [ngClass]="{'error':isInvalidComment('comment')}">
 
                                 </textarea>
                             </div>
                             <div class="class form-group">
-                                <label for="emotions">Please leave you emotions</label>
+                                <label for="emotions">Please leave your emotions</label>
                                 <select name="emotions" id="emotions" class="form-control" formControlName="emotions">
-                                    <option value="sad">Sad</option>
-                                    <option value="content">Content</option>
-                                    <option value="depressed">Depressed</option>
-                                    <option value="anxious">Anxious</option>
+                                    <option value="Sad">Sad</option>
+                                    <option value="Content">Content</option>
+                                    <option value="Depressed">Depressed</option>
+                                    <option value="Anxious">Anxious</option>
+                                    <option value="Happy">Happy</option>
                                 </select>
                             </div>
                             <span *ngIf="isIncompleteComment()">You must complete all fields</span>
                             <button *ngIf="!isIncompleteComment()" type="submit" class="btn btn-success">Submit</button>
                         </form>
                     </ng-container>
-                    <ng-template #loggedOut>
+                    <ng-template #logOut>
                         <h2>Please login to add a comment</h2>
                     </ng-template>
                 </div>
             </div>
         </div> 
     </div>
+    <br>
+    <br>
 </body>
 
 

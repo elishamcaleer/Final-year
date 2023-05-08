@@ -1,11 +1,49 @@
-.card-deck { padding-top: 30px; text-align: center;
+.card-deck { 
+
+    padding-top: 30px; 
+    text-align: center;
 }
-.card-img-top { object-fit: cover; width: 60px; height: 60px; align-self: center;
-}
+
+
 .error {
+
 background-color: #fff0f0;
+
 }
+
 body {
+
 margin-top: 55px;
 background-color: rgb(144, 144, 144);
+
+}
+
+.card-head{
+
+    color: rgb(8, 8, 106);
+    font-weight:500;
+
+}
+
+.card-body{
+
+    color: rgb(8, 8, 106);
+    font-weight:500;
+
+}
+
+.card-footer{
+
+    color: rgb(8, 8, 106);
+    font-weight: 400;
+
+}
+
+.title{
+
+    padding-top: 20px;
+    color: rgb(8, 8, 106);
+    font-weight: 500;
+    font-size: xx-large;
+
 }

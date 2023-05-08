@@ -38,11 +38,32 @@ import { ActivatedRoute } from '@angular/router';
         this.commentForm = this.formBuilder.group({
             username: ['', Validators.required],
             comment: ['', Validators.required],
-            emotions: 'sad'
+            emotions: 'Sad'
         });
 
         this.discussion_list= this.webService.getDiscussion(this.route.snapshot.params['id']);
         this.comments = this.webService.getComments(this.route.snapshot.params['id']);
+    }
+
+    updateComment(){
+        this.updateCommentForm = this.formBuilder.group({
+            comment: ['', Validators.required],
+            emotions: 'Sad'
+        });
+    }  
+    
+    onSubmitComment(){
+        this.webService.postComment(this.commentForm.value).subscribe((response: any) =>{
+            this.commentForm.reset();
+            this.comments = this.webService.getComments(this.route.snapshot.params['id'])
+        })
+    }
+
+    onSubmitDeleteComment(id:any){
+        if(confirm("Do you want to delete this comment"))
+        this.webService.deleteComment(id).subscribe(response =>{
+            this.comments = this.webService.getComments(this.route.snapshot.params['id'])
+        })
     }
 
     updateDiscussion(){
@@ -54,20 +75,12 @@ import { ActivatedRoute } from '@angular/router';
         this.discussion_list = this.webService.getDiscussion(this.route.snapshot.params['id']);
     }
 
-    updateComment(){
-        this.updateCommentForm = this.formBuilder.group({
-            comment: ['', Validators.required],
-            emotions: 'sad'
-        });
-
-        this.discussion_list = this.webService.getDiscussion(this.route.snapshot.params['id']);
-        this.comments = this.webService.getComments(this.route.snapshot.params['id']);
-    }
-
-    onSubmitComment(){
-        this.webService.postComment(this.commentForm.value).subscribe((response: any) =>{
-            this.commentForm.reset();
-            this.comments = this.webService.getComments(this.route.snapshot.params['id'])
+    onSubmitDeleteDiscussion(){
+        if(confirm("Do you want to delete this discussion"))
+        this.webService.deleteDiscussion(this.route.snapshot.params['id'])
+        .subscribe(response =>{
+            this.discussion_list = this.webService.getDiscussions(this.page);
+            window.location.href = "http://localhost:4200/discussion"
         })
     }
 
@@ -124,22 +137,6 @@ import { ActivatedRoute } from '@angular/router';
 
     displayForm(){
         this.showForm = true;
-    }
-
-    onSubmitDeleteDiscussion(){
-        if(confirm("Do you want to delete this discussion"))
-        this.webService.deleteDiscussion(this.route.snapshot.params['id'])
-        .subscribe(response =>{
-            this.discussion_list = this.webService.getDiscussions(this.page);
-            window.location.href = "http://localhost:4200/discussion"
-        })
-    }
-
-    onSubmitDeleteComment(id:any){
-        if(confirm("Do you want to delete this comment"))
-        this.webService.deleteComment(id).subscribe(response =>{
-            this.comments = this.webService.getComments(this.route.snapshot.params['id'])
-        })
     }
 
     }

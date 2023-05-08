@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 // import { ThisReceiver } from '@angular/compiler';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+
 @Injectable()
 
 export class WebService {
@@ -10,7 +12,11 @@ export class WebService {
 
    private commentID : any;
 
-   constructor(private http: HttpClient) { }
+   private assessmentID : any;
+
+
+   constructor(private http: HttpClient,
+      private authService: AuthService) { }
 
 
    getWordcloud(){
@@ -25,7 +31,7 @@ export class WebService {
       return this.http.get<any>('assets/sentiment_analysis.json');
     }
 
-   getDiscussions(page:number){
+    getDiscussions(page:number){
       return this.http.get('http://127.0.0.1:5000/api/v1.0/discussion?pn=' + page);
    }
 
@@ -87,4 +93,36 @@ export class WebService {
       this.commentID = comment;
       return this.http.delete('http://127.0.0.1:5000/api/v1.0/discussion/' + this.discussionID + '/comments/' + comment);
    }
+
+   getCount(): Observable<number> {
+      return this.http.get<number>('http://127.0.0.1:5000/api/v1.0/count');
+    }
+    
+    getAssessmentCount(): Observable<number> {
+      return this.http.get<number>('http://127.0.0.1:5000/api/v1.0/assessmentcount');
+    }
+
+   postAssessment(assessment_list:any){
+      let postData = new FormData();
+      postData.append("question1", assessment_list.question1);
+      postData.append("question2", assessment_list.question2);
+      postData.append("question3", assessment_list.question3);
+      postData.append("question4", assessment_list.question4);
+      postData.append("question5", assessment_list.question5);
+      postData.append("question6", assessment_list.question6);
+      postData.append("question6_select", assessment_list.question6_select);
+
+      return this.http.post('http://127.0.0.1:5000/api/v1.0/self-assess', postData);
+   }
+   
+   getAssessment(id:any){
+      this.assessmentID = id;
+      return this.http.get('http://127.0.0.1:5000/api/v1.0/self-assess/' + id)
+
+   }
+
+   getModelData(): Observable<any> {
+      return this.http.get<any>('assets/model_output.json');
+    }
+
 }
