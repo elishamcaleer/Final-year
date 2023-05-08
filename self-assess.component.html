@@ -1,0 +1,92 @@
+<html>
+    <body>
+      <div class="title">
+          <h1>Self Assessment Tool</h1>
+        </div>
+          <ng-container>
+          <form [formGroup]="assessment_form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="question1">1: What sex are you (4 selection)</label>
+                <br>
+                <input type="radio" id="male" name="question1" value="male"
+                    formControlName="question1">
+                    <label for="male">Male</label>
+                <br>
+                <input type="radio" id="female" name="question1" value="female"
+                    formControlName="question1">
+                    <label for="female">Female</label>
+                <br>
+                <input type="radio" id="other" name="question1" value="other"
+                    formControlName="question1">
+                    <label for="other">Other</label>  
+                <br> 
+                <input type="radio" id="na" name="question1" value="na"
+                    formControlName="question1">
+                    <label for="na">Pefer Not to Say</label> 
+            </div>
+            <div class="form-group">
+                <label for="question2">2: How would you rate your day (1-10)</label>
+                <br>
+                1
+                <input type="range" min="1" max="10" formControlName="question2">
+                10
+            </div>
+            <div class="form-group">
+                <label for="question3">3: What emotions would you say you experienced today (select all applicable)</label>
+                <br>
+                <select id="mySelect" formControlName="question3" multiple>
+                  <option id="happy" name="question3" value="happy">Happy</option>
+                  <option id="sad" name="question3" value="sad">Sad</option>
+                  <option id="angry" name="question3" value="angry">Angry</option>
+                  <option id="anxious" name="question3" value="anxious">Anxious</option>
+                  <option id="excited" name="question3" value="excited">Excited</option>
+                  <option id="calm" name="question3" value="calm">Calm</option>
+                  <option id="depressed" name="question3" value="despressed">Depressed</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label for="question4">4: What would you say was positive about your day (if any)</label>
+              <textarea rows="3" id="question4" name="question4" class="form-control"
+                  formControlName="question4" [ngClass]="{'error': isInvalid('question4')}">
+              </textarea>
+          </div>
+          <div class="form-group">
+            <label for="question5">5: What would you say was negative about your day (if any)</label>
+            <textarea rows="3" id="question5" name="question5" class="form-control"
+                formControlName="question5" [ngClass]="{'error': isInvalid('question5')}">
+            </textarea>
+          </div>
+          <div class="form-group">
+            <label for="question6">6: Have you had any unexplained physical symptoms </label>
+            <br>
+              <input type="radio" id="yes" name="question6" value="yes"
+              formControlName="question6">
+              <label for="yes">Yes</label>
+              <br>
+              <input type="radio" id="no" name="question6" value="no"
+              formControlName="question6">
+              <label for="no">No</label>
+              <br>
+              <select *ngIf="assessment_form.controls['question6'].value === 'yes'" formControlName="question6_select">
+              <option value="">Select an option</option>
+              <option value="option1">Headache</option>
+              <option value="option2">Upset Stomach</option>
+              <option value="option3">Lack of Sleep</option>
+              <option value="option4">Heart Palpitations</option>
+              <option value="option5">Diziness</option>
+              </select>
+          </div>
+          <br>
+          <div class="validate">
+            <span *ngIf="isIncomplete()">
+                All fields must be completed
+            </span>
+          </div>
+          <div class="button">
+            <button *ngIf="!isIncomplete()" type="submit" class="btn btn-success">Success
+            </button>
+          </div>
+        </form>
+    </ng-container>
+        </body>
+</html>

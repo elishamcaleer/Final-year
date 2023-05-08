@@ -1,0 +1,36 @@
+.error {
+    background-color: #fff0f0;
+    }
+    
+body {
+        margin-top: 55px;
+        background-color: rgb(144, 144, 144);
+        }
+
+
+.form-group{
+    margin-top: 55px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color:rgb(8, 8, 106);
+    font-weight: 400;
+    font-size: large;
+    align-items: center;
+
+}
+
+.title{
+    padding-top: 20px;
+    color: rgb(8, 8, 106);
+    font-weight:500;
+}
+
+.validate{
+
+    color: rgb(8, 8, 106);
+    padding-left:20px;
+}
+
+.button{
+    padding-left:20px;
+}
